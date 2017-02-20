@@ -1,0 +1,549 @@
+cat /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/spark-job-server.log
+[2017-02-20 08:40:16,529] INFO  park.jobserver.JobManager$ [] [] - Starting JobManager named jobManager-09-bc6d-ab393ddb70e4 with config {
+    # system properties
+    "app" : {
+        # system properties
+        "name" : "spark.jobserver.JobManager"
+    },
+    # system properties
+    "authenticate" : "false",
+    # system properties
+    "submit" : {
+        # system properties
+        "deployMode" : "client"
+    },
+    # /apps/spark/job-server/myapp.conf: 13
+    #  Default # of CPUs for jobs to use for Spark standalone cluster
+    "job-number-cpus" : 4,<
+    # system properties
+    "jars" : "file:/apps/spark/job-server/spark-job-server.jar",
+    # system properties
+    "serializer" : "org.apache.spark.serializer.KryoSerializer",
+    # application.conf: 91
+    #  predefined Spark contexts
+    #  Below is an example, but do not uncomment it.   Everything defined here is carried over to
+    #  deploy-time configs, so they will be created in all environments.  :(
+    "contexts" : {},
+    # /apps/spark/job-server/myapp.conf: 10
+    #  spark.master will be passed to each job's JobContext
+    # master = "local[4]"
+    # master = "local[4]"
+    #  master = "mesos://vm28-hulk-pub:5050"
+    "master" : "yarn-client",
+    # merge of /apps/spark/job-server/myapp.conf: 78,application.conf: 101
+    #  Universal context configuration.  These settings can be overridden, see README.md
+    #  Default settings for ad hoc as well as manually created contexts
+    #  You can add any Spark config params here, for example, spark.mesos.coarse = true
+    "context-settings" : {
+        # application.conf: 125
+        #  Timeout for SupervisorActor to wait for forked (separate JVM) contexts to initialize
+        "context-init-timeout" : "60s",
+        # merge of /apps/spark/job-server/myapp.conf: 102,application.conf: 109
+        "streaming" : {
+            # /apps/spark/job-server/myapp.conf: 104
+            "stopGracefully" : true,
+            # application.conf: 118
+            #  if true, stops the SparkContext with the StreamingContext. The underlying SparkContext will be
+            #  stopped regardless of whether the StreamingContext has been started.
+            "stopSparkContext" : true,
+            # /apps/spark/job-server/myapp.conf: 103
+            "batch_interval" : 3000
+        },
+        # /apps/spark/job-server/myapp.conf: 80
+        #  important
+        "num-cpu-cores" : 2,
+        # /apps/spark/job-server/myapp.conf: 79-86
+        "spark" : {
+            # /apps/spark/job-server/myapp.conf: 79-86
+            "driver" : {
+                # /apps/spark/job-server/myapp.conf: 86
+                "memory" : "1024m",
+                # /apps/spark/job-server/myapp.conf: 83
+                #  Executor memory per node, -Xmx style eg 512m, #1G, etc.
+                #     spark.yarn.jar = "hdfs://localhost/user/myapp-admin/spark-assembly-1.6.0-cdh5.7.0-hadoop2.6.0-cdh5.7.0.jar"
+                "cores" : 3,
+                # /apps/spark/job-server/myapp.conf: 79
+                "port" : 32456
+            },
+            # /apps/spark/job-server/myapp.conf: 84-85
+            "executor" : {
+                # /apps/spark/job-server/myapp.conf: 85
+                "memory" : "1024m",
+                # /apps/spark/job-server/myapp.conf: 84
+                "instances" : 1
+            }
+        },
+        # application.conf: 107
+        #  A zero-arg class implementing spark.jobserver.context.SparkContextFactory
+        #  Determines the type of jobs that can run in a SparkContext
+        "context-factory" : "spark.jobserver.context.DefaultSparkContextFactory",
+        # /apps/spark/job-server/myapp.conf: 97
+        #  Add settings you wish to pass directly to the sparkConf as-is such as Hadoop connection
+        #  settings that don't use the "spark." prefix
+        "passthrough" : {
+            # /apps/spark/job-server/myapp.conf: 99-100
+            "spark" : {
+                # /apps/spark/job-server/myapp.conf: 100
+                "driver" : {
+                    # /apps/spark/job-server/myapp.conf: 100
+                    "allowMultipleContexts" : true
+                },
+                # /apps/spark/job-server/myapp.conf: 99
+                "cassandra" : {
+                    # /apps/spark/job-server/myapp.conf: 99
+                    "connection" : {
+                        # /apps/spark/job-server/myapp.conf: 99
+                        # es.nodes = "192.1.1.1"
+                        "host" : "127.0.0.1"
+                    }
+                }
+            }
+        },
+        # /apps/spark/job-server/myapp.conf: 81
+        #  Number of cores to allocate.  Required.
+        "memory-per-node" : "1024m"
+    },
+    # system properties
+    "ui" : {
+        # system properties
+        "killEnabled" : "true"
+    },
+    # system properties
+    "driver" : {
+        # system properties
+        "memory" : "1G",
+        # system properties
+        "extraJavaOptions" : "-XX:+UseConcMarkSweepGC\n -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:/apps/spark/job-server/gc.out\n -XX:MaxPermSize=512m\n -XX:+CMSClassUnloadingEnabled  -XX:MaxDirectMemorySize=512M\n -XX:+HeapDumpOnOutOfMemoryError -Djava.net.preferIPv4Stack=true -Dlog4j.configuration=file:/apps/spark/job-server/log4j-server.properties -DLOG_DIR=/var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542 -Dspark.executor.uri=/apps/spark/job-server/spark/spark-1.6.0.tar.gz  -Dspark.executor.extraClassPath=/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/../hive/lib/*",
+        # system properties
+        "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native"
+    },
+    # application.conf: 5
+    #  spark web UI port
+    "webUrlPort" : 8080,
+    # system properties
+    "dynamicAllocation" : {
+        # system properties
+        "executorIdleTimeout" : "60",
+        # system properties
+        "minExecutors" : "0",
+        # system properties
+        "schedulerBacklogTimeout" : "1",
+        # system properties
+        "enabled" : "true"
+    },
+    # system properties
+    "executor" : {
+        # system properties
+        "extraJavaOptions" : "-Dlog4j.configuration=file:/apps/spark/job-server/log4j-server.properties -DLOG_DIR=/var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542",
+        # system properties
+        "uri" : "/apps/spark/job-server/spark/spark-1.6.0.tar.gz",
+        # system properties
+        "extraClassPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/../hive/lib/*",
+        # system properties
+        "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native"
+    },
+    # system properties
+    "eventLog" : {
+        # system properties
+        "dir" : "hdfs://localhost:8020/user/spark/applicationHistory",
+        # system properties
+        "enabled" : "true"
+    },
+    # system properties
+    "yarn" : {
+        # system properties
+        "historyServer" : {
+            # system properties
+            "address" : "http://localhost:18088"
+        },
+        # system properties
+        "jar" : "local:/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/lib/spark-assembly.jar",
+        # system properties
+        "am" : {
+            # system properties
+            "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native"
+        },
+        # system properties
+        "config" : {
+            # system properties
+            "gatewayPath" : "/apps/opt/cloudera/parcels",
+            # system properties
+            "replacementPath" : "{{HADOOP_COMMON_HOME}}/../../.."
+        }
+    },
+    # system properties
+    "shuffle" : {
+        # system properties
+        "service" : {
+            # system properties
+            "port" : "7337",
+            # system properties
+            "enabled" : "true"
+        }
+    },
+    # merge of /apps/spark/job-server/myapp.conf: 15,application.conf: 7
+    "jobserver" : {
+        # application.conf: 9
+        "bind-address" : "0.0.0.0",
+        # /apps/spark/job-server/myapp.conf: 22
+        "yarn-context-creation-timeout" : "180s",
+        # /apps/spark/job-server/myapp.conf: 38
+        "sqldao" : {
+            # /apps/spark/job-server/myapp.conf: 43
+            #  JDBC driver, full classpath
+            "jdbc-driver" : "org.h2.Driver",
+            # /apps/spark/job-server/myapp.conf: 57
+            #  DB connection pool settings
+            "dbcp" : {
+                # /apps/spark/job-server/myapp.conf: 60
+                "maxidle" : 10,
+                # /apps/spark/job-server/myapp.conf: 61
+                "initialsize" : 10,
+                # /apps/spark/job-server/myapp.conf: 59
+                "maxactive" : 20,
+                # /apps/spark/job-server/myapp.conf: 58
+                "enabled" : false
+            },
+            # /apps/spark/job-server/myapp.conf: 46
+            #  Directory where default H2 driver stores its data. Only needed for H2.
+            "rootdir" : "/tmp/spark-jobserver/sqldao/data",
+            # /apps/spark/job-server/myapp.conf: 50
+            #  Full JDBC URL / init string, along with username and password.  Sorry, needs to match above.
+            #  Substitutions may be used to launch job-server, but leave it out here in the default or tests won't pass
+            "jdbc" : {
+                # /apps/spark/job-server/myapp.conf: 53
+                "password" : "",
+                # /apps/spark/job-server/myapp.conf: 52
+                "user" : "",
+                # /apps/spark/job-server/myapp.conf: 51
+                "url" : "jdbc:h2:file:/tmp/spark-jobserver/sqldao/data/h2-db"
+            },
+            # /apps/spark/job-server/myapp.conf: 40
+            #  Slick database driver, full classpath
+            "slick-driver" : "scala.slick.driver.H2Driver"
+        },
+        # /apps/spark/job-server/myapp.conf: 19
+        # context-per-jvm = false
+        "context-per-jvm" : true,
+        # /apps/spark/job-server/myapp.conf: 32
+        "datadao" : {
+            # /apps/spark/job-server/myapp.conf: 35
+            #  storage directory for files that are uploaded to the server
+            #  via POST/data commands
+            "rootdir" : "/tmp/spark-jobserver/upload"
+        },
+        # /apps/spark/job-server/myapp.conf: 21
+        "context-init-timeout" : "180s",
+        # /apps/spark/job-server/myapp.conf: 20
+        "context-creation-timeout" : "180s",
+        # application.conf: 73
+        #  Time out for job server to wait while creating named objects
+        "named-object-creation-timeout" : "60 s",
+        # /apps/spark/job-server/myapp.conf: 16
+        "port" : 8090,
+        # /apps/spark/job-server/myapp.conf: 65
+        #  When using chunked transfer encoding with scala Stream job results, this is the size of each chunk
+        "result-chunk-size" : "1m",
+        # application.conf: 77
+        #  Number of jobs that can be run simultaneously per context
+        #  If not set, defaults to number of cores on machine where jobserver is running
+        "max-jobs-per-context" : 8,
+        # application.conf: 67
+        #  The ask pattern timeout for Api
+        "short-timeout" : "3 s",
+        # application.conf: 85
+        #  spark broadcst factory in yarn deployment
+        #  Versions prior to 1.1.0, spark default broadcast factory is org.apache.spark.broadcast.HttpBroadcastFactory.
+        #  Can't start multiple sparkContexts in the same JVM with HttpBroadcastFactory.
+        "yarn-broadcast-factory" : "org.apache.spark.broadcast.TorrentBroadcastFactory",
+        # /apps/spark/job-server/myapp.conf: 26
+        #  Note: JobFileDAO is deprecated from v0.7.0 because of issues in
+        #  production and will be removed in future, now defaults to H2 file.
+        "jobdao" : "spark.jobserver.io.JobSqlDAO",
+        # application.conf: 15
+        #  Number of job results to keep per JobResultActor/context
+        "job-result-cache-size" : 5000,
+        # /apps/spark/job-server/myapp.conf: 28
+        "filedao" : {
+            # /apps/spark/job-server/myapp.conf: 29
+            "rootdir" : "/tmp/spark-jobserver/filedao/data"
+        }
+    }
+}
+[2017-02-20 08:40:16,532] INFO  park.jobserver.JobManager$ [] [] - ..and context config:
+{
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "context-init-timeout" : "60s",
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "streaming" : {
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "stopGracefully" : true,
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "stopSparkContext" : true,
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "batch_interval" : 3000
+    },
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "num-cpu-cores" : 2,
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "spark" : {
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "driver" : {
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "memory" : "1024m",
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "cores" : 3,
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "port" : 32456
+        },
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "executor" : {
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "memory" : "1024m",
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "instances" : 1
+        }
+    },
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "context-factory" : "spark.jobserver.context.DefaultSparkContextFactory",
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "context" : {
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "name" : "82d588ab-com.me.myapp.MyMainClass",
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "actorname" : "jobManager-09-bc6d-ab393ddb70e4"
+    },
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "passthrough" : {
+        # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+        "spark" : {
+            # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+            "driver" : {
+                # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+                "allowMultipleContexts" : true
+            }
+        }
+    },
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "memory-per-node" : "1024m",
+    # /var/log/job-server/jobserver-82d588ab-com.me.myapp.MyMainClass1393891358964735542/context.conf: 1
+    "is-adhoc" : "true"
+}
+[2017-02-20 08:40:16,731] INFO  ka.event.slf4j.Slf4jLogger [] [] - Slf4jLogger started
+[2017-02-20 08:40:16,803] INFO  Remoting [] [Remoting] - Starting remoting
+[2017-02-20 08:40:16,933] INFO  Remoting [] [Remoting] - Remoting started; listening on addresses :[akka.tcp://JobServer@127.0.0.1:40948]
+[2017-02-20 08:40:16,934] INFO  Remoting [] [Remoting] - Remoting now listens on addresses: [akka.tcp://JobServer@127.0.0.1:40948]
+[2017-02-20 08:40:16,953] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:40948] - Starting up...
+[2017-02-20 08:40:17,030] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:40948] - Registered cluster JMX MBean [akka:type=Cluster]
+[2017-02-20 08:40:17,030] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:40948] - Started up successfully
+[2017-02-20 08:40:17,042] INFO  park.jobserver.JobManager$ [] [] - Joining cluster at address akka.tcp://JobServer@127.0.0.1:41868
+[2017-02-20 08:40:17,042] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:40948] - No seed-nodes configured, manual cluster join required
+[2017-02-20 08:40:17,047] INFO  kka.actor.ProductionReaper [] [akka://JobServer/user/$a] - Starting actor ooyala.common.akka.actor.ProductionReaper
+[2017-02-20 08:40:17,048] INFO  .jobserver.JobManagerActor [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Starting actor spark.jobserver.JobManagerActor
+[2017-02-20 08:40:17,087] INFO  kka.actor.ProductionReaper [] [akka://JobServer/user/$a] - Watching actor Actor[akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4#239167719]
+[2017-02-20 08:40:17,258] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:40948] - Welcome from [akka.tcp://JobServer@127.0.0.1:41868]
+[2017-02-20 08:40:18,227] INFO  k.jobserver.JobStatusActor [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4/$a] - Starting actor spark.jobserver.JobStatusActor
+[2017-02-20 08:40:18,270] INFO  parkContextFactory$$anon$1 [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Running Spark version 1.6.0
+[2017-02-20 08:40:18,767] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Changing view acls to: myapp-admin
+[2017-02-20 08:40:18,768] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Changing modify acls to: myapp-admin
+[2017-02-20 08:40:18,768] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(myapp-admin); users with modify permissions: Set(myapp-admin)
+[2017-02-20 08:40:18,940] INFO  rg.apache.spark.util.Utils [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Successfully started service 'sparkDriver' on port 32456.
+[2017-02-20 08:40:18,971] INFO  ka.event.slf4j.Slf4jLogger [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Slf4jLogger started
+[2017-02-20 08:40:18,978] INFO  Remoting [] [Remoting] - Starting remoting
+[2017-02-20 08:40:18,993] INFO  Remoting [] [Remoting] - Remoting started; listening on addresses :[akka.tcp://sparkDriverActorSystem@127.0.0.1:32457]
+[2017-02-20 08:40:18,994] INFO  Remoting [] [Remoting] - Remoting now listens on addresses: [akka.tcp://sparkDriverActorSystem@127.0.0.1:32457]
+[2017-02-20 08:40:18,995] INFO  rg.apache.spark.util.Utils [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Successfully started service 'sparkDriverActorSystem' on port 32457.
+[2017-02-20 08:40:19,014] INFO  org.apache.spark.SparkEnv [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registering MapOutputTracker
+[2017-02-20 08:40:19,027] INFO  org.apache.spark.SparkEnv [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registering BlockManagerMaster
+[2017-02-20 08:40:19,038] INFO  k.storage.DiskBlockManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Created local directory at /tmp/blockmgr-c6a55955-535c-4cb3-b985-e65c28c4a320
+[2017-02-20 08:40:19,052] INFO  .spark.storage.MemoryStore [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - MemoryStore started with capacity 534.5 MB
+[2017-02-20 08:40:19,179] INFO  org.apache.spark.SparkEnv [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registering OutputCommitCoordinator
+[2017-02-20 08:40:19,331] INFO  roject.jetty.server.Server [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - jetty-8.y.z-SNAPSHOT
+[2017-02-20 08:40:19,369] INFO  y.server.AbstractConnector [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Started SelectChannelConnector@0.0.0.0:40907
+[2017-02-20 08:40:19,369] INFO  rg.apache.spark.util.Utils [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Successfully started service 'SparkUI' on port 40907.
+[2017-02-20 08:40:19,370] INFO  rg.apache.spark.ui.SparkUI [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Started SparkUI at http://127.0.0.1:40907
+[2017-02-20 08:40:19,393] INFO  parkContextFactory$$anon$1 [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Added JAR file:/apps/spark/job-server/spark-job-server.jar at spark://127.0.0.1:32456/jars/spark-job-server.jar with timestamp 1487576419393
+[2017-02-20 08:40:19,583] INFO  hadoop.yarn.client.RMProxy [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Connecting to ResourceManager at localhost/127.0.0.1:8032
+[2017-02-20 08:40:19,803] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Requesting a new application from cluster with 1 NodeManagers
+[2017-02-20 08:40:19,819] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Verifying our application has not requested more than the maximum memory capability of the cluster (22528 MB per container)
+[2017-02-20 08:40:19,820] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Will allocate AM container, with 896 MB memory including 384 MB overhead
+[2017-02-20 08:40:19,820] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Setting up container launch context for our AM
+[2017-02-20 08:40:19,822] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Setting up the launch environment for our AM container
+[2017-02-20 08:40:19,831] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Preparing resources for our AM container
+[2017-02-20 08:40:20,545] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Uploading resource file:/tmp/spark-7071753f-4713-4890-87fd-87a4b764330b/__spark_conf__8102420237460794282.zip -> hdfs://localhost:8020/user/myapp-admin/.sparkStaging/application_1487333885026_0004/__spark_conf__8102420237460794282.zip
+[2017-02-20 08:40:20,828] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Changing view acls to: myapp-admin
+[2017-02-20 08:40:20,829] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Changing modify acls to: myapp-admin
+[2017-02-20 08:40:20,829] INFO  ache.spark.SecurityManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(myapp-admin); users with modify permissions: Set(myapp-admin)
+[2017-02-20 08:40:20,834] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Submitting application 4 to ResourceManager
+[2017-02-20 08:40:20,870] INFO  nt.api.impl.YarnClientImpl [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Submitted application application_1487333885026_0004
+[2017-02-20 08:40:21,875] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Application report for application_1487333885026_0004 (state: ACCEPTED)
+[2017-02-20 08:40:21,878] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] -
+         client token: N/A
+         diagnostics: N/A
+         ApplicationMaster host: N/A
+         ApplicationMaster RPC port: -1
+         queue: root.users.myapp-admin
+         start time: 1487576420849
+         final status: UNDEFINED
+         tracking URL: http://localhost:8088/proxy/application_1487333885026_0004/
+         user: myapp-admin
+[2017-02-20 08:40:22,879] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Application report for application_1487333885026_0004 (state: ACCEPTED)
+[2017-02-20 08:40:23,492] INFO  kend$YarnSchedulerEndpoint [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - ApplicationMaster registered as NettyRpcEndpointRef(null)
+[2017-02-20 08:40:23,505] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> localhost, PROXY_URI_BASES -> http://localhost:8088/proxy/application_1487333885026_0004), /proxy/application_1487333885026_0004
+[2017-02-20 08:40:23,506] INFO  apache.spark.ui.JettyUtils [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Adding filter: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+[2017-02-20 08:40:23,880] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Application report for application_1487333885026_0004 (state: RUNNING)
+[2017-02-20 08:40:23,881] INFO  e.spark.deploy.yarn.Client [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] -
+         client token: N/A
+         diagnostics: N/A
+         ApplicationMaster host: 127.0.0.1
+         ApplicationMaster RPC port: 0
+         queue: root.users.myapp-admin
+         start time: 1487576420849
+         final status: UNDEFINED
+         tracking URL: http://localhost:8088/proxy/application_1487333885026_0004/
+         user: myapp-admin
+[2017-02-20 08:40:23,881] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Application application_1487333885026_0004 has started running.
+[2017-02-20 08:40:23,890] INFO  rg.apache.spark.util.Utils [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45359.
+[2017-02-20 08:40:23,890] INFO  .NettyBlockTransferService [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Server created on 45359
+[2017-02-20 08:40:23,893] INFO  spark.storage.BlockManager [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - external shuffle service port = 7337
+[2017-02-20 08:40:23,893] INFO  storage.BlockManagerMaster [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Trying to register BlockManager
+[2017-02-20 08:40:23,895] INFO  BlockManagerMasterEndpoint [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registering block manager 127.0.0.1:45359 with 534.5 MB RAM, BlockManagerId(driver, 127.0.0.1, 45359)
+[2017-02-20 08:40:23,898] INFO  storage.BlockManagerMaster [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registered BlockManager
+[2017-02-20 08:40:24,132] INFO  duler.EventLoggingListener [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Logging events to hdfs://localhost:8020/user/spark/applicationHistory/application_1487333885026_0004
+[2017-02-20 08:40:24,133] WARN  parkContextFactory$$anon$1 [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Dynamic Allocation and num executors both set, thus dynamic allocation disabled.
+[2017-02-20 08:40:26,968] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registered executor NettyRpcEndpointRef(null) (localhost:59634) with ID 1
+[2017-02-20 08:40:27,020] INFO  BlockManagerMasterEndpoint [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Registering block manager localhost:45584 with 530.0 MB RAM, BlockManagerId(1, localhost, 45584)
+[2017-02-20 08:40:27,052] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+[2017-02-20 08:40:27,174] INFO  .jobserver.JobManagerActor [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Loading class com.me.myapp.MyMainClass for app com.me.myapp.MyMainClass
+[2017-02-20 08:40:27,185] INFO  parkContextFactory$$anon$1 [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Added JAR /tmp/spark-jobserver/sqldao/data/com.me.myapp.MyMainClass-2017-02-17T14:00:16.221+01:00.jar at spark://127.0.0.1:32456/jars/com.me.myapp.MyMainClass-2017-02-17T14:00:16.221+01:00.jar with timestamp 1487576427185
+[2017-02-20 08:40:27,187] INFO  util.ContextURLClassLoader [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Added URL file:/tmp/spark-jobserver/sqldao/data/com.me.myapp.MyMainClass-2017-02-17T14:00:16.221+01:00.jar to ContextURLClassLoader
+[2017-02-20 08:40:27,188] INFO  k.jobserver.util.JarUtils$ [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Loading object com.me.myapp.MyMainClass$ using loader spark.jobserver.util.ContextURLClassLoader@2af8c05e
+[2017-02-20 08:40:27,197] INFO  k.jobserver.util.JarUtils$ [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Loading class com.me.myapp.MyMainClass using loader spark.jobserver.util.ContextURLClassLoader@2af8c05e
+[2017-02-20 08:40:27,205] INFO  tm.utils.JobsConfiguration [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - config.properties
+[2017-02-20 08:40:27,206] INFO  tm.utils.JobsConfiguration [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - org.apache.spark.util.MutableURLClassLoader@de3a06f
+[2017-02-20 08:40:27,210] ERROR .jobserver.JobManagerActor [] [] - About to restart actor due to exception:
+java.lang.reflect.InvocationTargetException
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+        at spark.jobserver.util.JarUtils$$anonfun$fallBackToClass$1$1.apply(JarUtils.scala:32)
+        at spark.jobserver.JobManagerActor$$anonfun$startJobInternal$1.apply$mcV$sp(JobManagerActor.scala:231)
+        at scala.util.control.Breaks.breakable(Breaks.scala:37)
+        at spark.jobserver.JobManagerActor.startJobInternal(JobManagerActor.scala:192)
+        at spark.jobserver.JobManagerActor$$anonfun$wrappedReceive$1.applyOrElse(JobManagerActor.scala:144)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.ActorStack$$anonfun$receive$1.applyOrElse(ActorStack.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.Slf4jLogging$$anonfun$receive$1$$anonfun$applyOrElse$1.apply$mcV$sp(Slf4jLogging.scala:26)
+        at ooyala.common.akka.Slf4jLogging$class.ooyala$common$akka$Slf4jLogging$$withAkkaSourceLogging(Slf4jLogging.scala:35)
+        at ooyala.common.akka.Slf4jLogging$$anonfun$receive$1.applyOrElse(Slf4jLogging.scala:25)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.ActorMetrics$$anonfun$receive$1.applyOrElse(ActorMetrics.scala:24)
+        at akka.actor.ActorCell.receiveMessage(ActorCell.scala:498)
+        at akka.actor.ActorCell.invoke(ActorCell.scala:456)
+        at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:237)
+        at akka.dispatch.Mailbox.run(Mailbox.scala:219)
+        at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)
+        at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+        at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+        at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+        at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.NullPointerException
+        at java.util.Properties$LineReader.readLine(Properties.java:434)
+        at java.util.Properties.load0(Properties.java:353)
+        at java.util.Properties.load(Properties.java:341)
+        at com.me.myapp.utils.JobsConfiguration.<init>(JobsConfiguration.java:44)
+        at com.me.myapp.common.job.myappJob.<init>(myappJob.java:38)
+        at com.me.myapp.MyMainClass.<init>(MyMainClass.java:17)
+        ... 32 more
+[2017-02-20 08:40:27,210] ERROR ka.actor.OneForOneStrategy [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] -
+java.lang.reflect.InvocationTargetException
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+        at spark.jobserver.util.JarUtils$$anonfun$fallBackToClass$1$1.apply(JarUtils.scala:32)
+        at spark.jobserver.JobManagerActor$$anonfun$startJobInternal$1.apply$mcV$sp(JobManagerActor.scala:231)
+        at scala.util.control.Breaks.breakable(Breaks.scala:37)
+        at spark.jobserver.JobManagerActor.startJobInternal(JobManagerActor.scala:192)
+        at spark.jobserver.JobManagerActor$$anonfun$wrappedReceive$1.applyOrElse(JobManagerActor.scala:144)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.ActorStack$$anonfun$receive$1.applyOrElse(ActorStack.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.Slf4jLogging$$anonfun$receive$1$$anonfun$applyOrElse$1.apply$mcV$sp(Slf4jLogging.scala:26)
+        at ooyala.common.akka.Slf4jLogging$class.ooyala$common$akka$Slf4jLogging$$withAkkaSourceLogging(Slf4jLogging.scala:35)
+        at ooyala.common.akka.Slf4jLogging$$anonfun$receive$1.applyOrElse(Slf4jLogging.scala:25)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+        at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+        at ooyala.common.akka.ActorMetrics$$anonfun$receive$1.applyOrElse(ActorMetrics.scala:24)
+        at akka.actor.ActorCell.receiveMessage(ActorCell.scala:498)
+        at akka.actor.ActorCell.invoke(ActorCell.scala:456)
+        at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:237)
+        at akka.dispatch.Mailbox.run(Mailbox.scala:219)
+        at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)
+        at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+        at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+        at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+        at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.NullPointerException
+        at java.util.Properties$LineReader.readLine(Properties.java:434)
+        at java.util.Properties.load0(Properties.java:353)
+        at java.util.Properties.load(Properties.java:341)
+        at com.me.myapp.utils.JobsConfiguration.<init>(JobsConfiguration.java:44)
+        at com.me.myapp.common.job.myappJob.<init>(myappJob.java:38)
+        at com.me.myapp.MyMainClass.<init>(MyMainClass.java:17)
+        ... 32 more
+[2017-02-20 08:40:27,214] INFO  .jobserver.JobManagerActor [] [] - Shutting down SparkContext 82d588ab-com.me.myapp.MyMainClass
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/metrics/json,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/stage/kill,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/api,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/static,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/executors/threadDump/json,null}
+[2017-02-20 08:40:27,239] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/executors/threadDump,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/executors/json,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/executors,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/environment/json,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/environment,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/storage/rdd/json,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/storage/rdd,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/storage/json,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/storage,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/pool/json,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/pool,null}
+[2017-02-20 08:40:27,240] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/stage/json,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/stage,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages/json,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/stages,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/jobs/job/json,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/jobs/job,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/jobs/json,null}
+[2017-02-20 08:40:27,241] INFO  ver.handler.ContextHandler [] [] - stopped o.s.j.s.ServletContextHandler{/jobs,null}
+[2017-02-20 08:40:27,293] INFO  rg.apache.spark.ui.SparkUI [] [] - Stopped Spark web UI at http://127.0.0.1:40907
+[2017-02-20 08:40:27,319] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Interrupting monitor thread
+[2017-02-20 08:40:27,339] INFO  YarnClientSchedulerBackend [] [] - Shutting down all executors
+[2017-02-20 08:40:27,340] INFO  YarnClientSchedulerBackend [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Asking each executor to shut down
+[2017-02-20 08:40:27,345] INFO  YarnClientSchedulerBackend [] [] - Stopped
+[2017-02-20 08:40:27,348] INFO  utputTrackerMasterEndpoint [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - MapOutputTrackerMasterEndpoint stopped!
+[2017-02-20 08:40:27,361] INFO  .spark.storage.MemoryStore [] [] - MemoryStore cleared
+[2017-02-20 08:40:27,361] INFO  spark.storage.BlockManager [] [] - BlockManager stopped
+[2017-02-20 08:40:27,367] INFO  storage.BlockManagerMaster [] [] - BlockManagerMaster stopped
+[2017-02-20 08:40:27,369] INFO  tCommitCoordinatorEndpoint [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - OutputCommitCoordinator stopped!
+[2017-02-20 08:40:27,373] INFO  rovider$RemotingTerminator [] [akka://sparkDriverActorSystem/system/remoting-terminator] - Shutting down remote daemon.
+[2017-02-20 08:40:27,374] INFO  rovider$RemotingTerminator [] [akka://sparkDriverActorSystem/system/remoting-terminator] - Remote daemon shut down; proceeding with flushing remote transports.
+[2017-02-20 08:40:27,375] INFO  parkContextFactory$$anon$1 [] [] - Successfully stopped SparkContext
+[2017-02-20 08:40:27,376] INFO  .jobserver.JobManagerActor [] [akka://JobServer/user/jobManager-09-bc6d-ab393ddb70e4] - Starting actor spark.jobserver.JobManagerActor
+[2017-02-20 08:40:27,391] INFO  Remoting [] [Remoting] - Remoting shut down
+[2017-02-20 08:40:27,391] INFO  rovider$RemotingTerminator [] [akka://sparkDriverActorSystem/system/remoting-terminator] - Remoting shut down.
