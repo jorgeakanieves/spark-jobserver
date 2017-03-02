@@ -1,0 +1,182 @@
+cat jobserver-7c5826e1-com.mypackage.me.MyApp4929240774062124346/spark-job-server.log
+[2017-03-02 09:58:39,099] INFO  park.jobserver.JobManager$ [] [] - Starting JobManager named jobManager-dc-828b-71b3cd5e8a24 with config {
+    "ui" : {
+            "killEnabled" : "true"
+    },
+    "app" : {
+            "name" : "spark.jobserver.JobManager"
+    },
+    "webUrlPort" : 8080,
+    "submit" : {
+            "deployMode" : "client"
+    },
+    "serializer" : "org.apache.spark.serializer.KryoSerializer",
+    "executor" : {
+            "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native",
+            "uri" : "/apps/spark/job-server/spark/spark-1.6.0.tar.gz",
+            "extraClassPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/../hive/lib/*",
+            "extraJavaOptions" : "-Dlog4j.configuration=file:/apps/spark/job-server/log4j-server.properties -DLOG_DIR=/var/log/job-server/jobserver-7c5826e1-com.mypackage.me.MyApp4929240774062124346"
+    },
+    "jobserver" : {
+            "port" : 8090,
+            "sqldao" : {
+                            "rootdir" : "/tmp/spark-jobserver/sqldao/data",
+                            "slick-driver" : "scala.slick.driver.H2Driver",
+                            "dbcp" : {
+                            "enabled" : false,
+                            "maxidle" : 10,
+                            "maxactive" : 20,
+                            "initialsize" : 10
+            },
+                            "jdbc-driver" : "org.h2.Driver",
+                                    "jdbc" : {
+                            "password" : "",
+                            "user" : "",
+                            "url" : "jdbc:h2:file:/tmp/spark-jobserver/sqldao/data/h2-db"
+            }
+        },
+
+            "yarn-broadcast-factory" : "org.apache.spark.broadcast.TorrentBroadcastFactory",
+            "datadao" : {
+                                    "rootdir" : "/tmp/spark-jobserver/upload"
+        },
+"result-chunk-size" : "1m",
+            "bind-address" : "0.0.0.0",
+            "yarn-context-creation-timeout" : "180s",
+            "context-creation-timeout" : "180 s",
+"short-timeout" : "3 s",
+
+        "max-jobs-per-context" : 8,
+
+        "jobdao" : "spark.jobserver.io.JobSqlDAO",
+            "filedao" : {
+                    "rootdir" : "/tmp/spark-jobserver/filedao/data"
+        },
+"job-result-cache-size" : 5000,
+            "context-per-jvm" : true,
+"named-object-creation-timeout" : "60 s"
+    },
+    "context-settings" : {
+            "streaming" : {
+                    "stopGracefully" : true,
+                                    "stopSparkContext" : true,
+                    "batch_interval" : 3000
+        },
+
+        "context-init-timeout" : "180s",
+
+        "context-factory" : "spark.jobserver.context.DefaultSparkContextFactory",
+
+        "passthrough" : {
+                    "spark" : {
+                            "cassandra" : {
+                                    "connection" : {
+                                                                "host" : "localhost"
+                    }
+                },
+                            "driver" : {
+                                    "allowMultipleContexts" : true
+                }
+            }
+        },
+"memory-per-node" : "512m",
+            "num-cpu-cores" : 4,
+            "spark" : {
+                    "driver" : {
+                            "port" : 32456
+            },
+                    "akka" : {
+                                        "threads" : 4
+            }
+        }
+    },
+    "master" : "yarn-client",
+    "dynamicAllocation" : {
+            "enabled" : "true",
+            "minExecutors" : "0",
+            "executorIdleTimeout" : "60",
+            "schedulerBacklogTimeout" : "1"
+    },
+    "authenticate" : "false",
+    "job-number-cpus" : 4,
+    "shuffle" : {
+            "service" : {
+                    "port" : "7337",
+                    "enabled" : "true"
+        }
+    },
+    "eventLog" : {
+            "enabled" : "true",
+            "dir" : "hdfs://me-master.mypackage.com:8020/user/spark/applicationHistory"
+    },
+    "driver" : {
+            "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native",
+            "extraJavaOptions" : "-XX:+UseConcMarkSweepGC\n -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:/apps/spark/job-server/gc.out\n -XX:MaxPermSize=2048m -Xms256m -Xmx2048m\n -XX:+CMSClassUnloadingEnabled  -XX:MaxDirectMemorySize=512M\n -XX:+HeapDumpOnOutOfMemoryError -Djava.net.preferIPv4Stack=true -Dlog4j.configuration=file:/apps/spark/job-server/log4j-server.properties -DLOG_DIR=/var/log/job-server/jobserver-7c5826e1-com.mypackage.me.MyApp4929240774062124346 -Dspark.executor.uri=/apps/spark/job-server/spark/spark-1.6.0.tar.gz  -Dspark.executor.extraClassPath=/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/../hive/lib/*",
+            "memory" : "1G"
+    },
+    "contexts" : {},
+    "yarn" : {
+            "am" : {
+                    "extraLibraryPath" : "/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hadoop/lib/native"
+        },
+            "jar" : "local:/apps/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/spark/lib/spark-assembly.jar",
+            "config" : {
+                    "gatewayPath" : "/apps/opt/cloudera/parcels",
+                    "replacementPath" : "{{HADOOP_COMMON_HOME}}/../../.."
+        },
+            "historyServer" : {
+                    "address" : "http://me-master.mypackage.com:18088"
+        }
+    },
+    "jars" : "file:/apps/spark/job-server/spark-job-server.jar"
+}
+[2017-03-02 09:58:39,101] INFO  park.jobserver.JobManager$ [] [] - ..and context config:
+{
+    "streaming" : {
+            "stopGracefully" : true,
+            "stopSparkContext" : true,
+            "batch_interval" : 3000
+    },
+    "context-init-timeout" : "180s",
+    "is-adhoc" : "true",
+    "context-factory" : "spark.jobserver.context.DefaultSparkContextFactory",
+    "passthrough" : {
+            "spark" : {
+                    "cassandra" : {
+                            "connection" : {
+                                    "host" : "localhost"
+                }
+            },
+                    "driver" : {
+                            "allowMultipleContexts" : true
+            }
+        }
+    },
+    "memory-per-node" : "512m",
+    "num-cpu-cores" : 4,
+    "context" : {
+            "name" : "7c5826e1-com.mypackage.me.MyApp",
+            "actorname" : "jobManager-dc-828b-71b3cd5e8a24"
+    },
+    "spark" : {
+            "driver" : {
+                    "port" : 32456
+        },
+            "akka" : {
+                    "threads" : 4
+        }
+    }
+}
+[2017-03-02 09:58:39,391] INFO  ka.event.slf4j.Slf4jLogger [] [] - Slf4jLogger started
+[2017-03-02 09:58:39,472] INFO  Remoting [] [Remoting] - Starting remoting
+[2017-03-02 09:58:39,633] INFO  Remoting [] [Remoting] - Remoting started; listening on addresses :[akka.tcp://JobServer@127.0.0.1:42556]
+[2017-03-02 09:58:39,635] INFO  Remoting [] [Remoting] - Remoting now listens on addresses: [akka.tcp://JobServer@127.0.0.1:42556]
+[2017-03-02 09:58:39,657] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:42556] - Starting up...
+[2017-03-02 09:58:39,728] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:42556] - Registered cluster JMX MBean [akka:type=Cluster]
+[2017-03-02 09:58:39,729] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:42556] - Started up successfully
+[2017-03-02 09:58:39,742] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:42556] - No seed-nodes configured, manual cluster join required
+[2017-03-02 09:58:39,744] INFO  park.jobserver.JobManager$ [] [] - Joining cluster at address akka.tcp://JobServer@127.0.0.1:39816
+[2017-03-02 09:58:39,752] INFO  .jobserver.JobManagerActor [] [akka://JobServer/user/jobManager-dc-828b-71b3cd5e8a24] - Starting actor spark.jobserver.JobManagerActor
+[2017-03-02 09:58:39,752] INFO  kka.actor.ProductionReaper [] [akka://JobServer/user/$a] - Starting actor ooyala.common.akka.actor.ProductionReaper
+[2017-03-02 09:58:39,785] INFO  kka.actor.ProductionReaper [] [akka://JobServer/user/$a] - Watching actor Actor[akka://JobServer/user/jobManager-dc-828b-71b3cd5e8a24
+[2017-03-02 09:58:39,926] INFO  Cluster(akka://JobServer) [] [Cluster(akka://JobServer)] - Cluster Node [akka.tcp://JobServer@127.0.0.1:42556] - Welcome from [akka.tcp://JobServer@127.0.0.1:39816]
